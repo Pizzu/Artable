@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--LoginVC-->
         <scene sceneID="HJT-Fj-eoQ">
             <objects>
-                <viewController id="Bvf-Rl-nvb" sceneMemberID="viewController">
+                <viewController id="Bvf-Rl-nvb" customClass="LoginVC" customModule="Artable" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bXy-Mz-EJX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,15 +113,19 @@
                         <viewLayoutGuide key="safeArea" id="aF1-JA-epE"/>
                     </view>
                     <navigationItem key="navigationItem" id="fwQ-Wq-mLa"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="uPX-7a-chp" id="6J8-Ql-r4o"/>
+                        <outlet property="passwordTextField" destination="2mz-fn-w9j" id="t1W-CF-Osu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DdF-00-ptA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="903.20000000000005" y="138.91625615763547"/>
         </scene>
-        <!--View Controller-->
+        <!--RegisterVC-->
         <scene sceneID="60A-dN-2Kg">
             <objects>
-                <viewController id="7Cb-MH-Xgb" sceneMemberID="viewController">
+                <viewController id="7Cb-MH-Xgb" customClass="RegisterVC" customModule="Artable" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UIp-Vq-7b3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,21 +188,24 @@
                                         <state key="normal" title="Register">
                                             <color key="titleColor" red="0.95294117649999999" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="registerPressed:" destination="7Cb-MH-Xgb" eventType="touchUpInside" id="atX-qk-Gdo"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uOc-P8-6Cc">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uOc-P8-6Cc">
                                 <rect key="frame" x="169" y="425.33333333333331" width="37" height="37"/>
                                 <color key="color" red="0.2274509804" green="0.2666666667" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_check" translatesAutoresizingMaskIntoConstraints="NO" id="LZc-vv-bIV">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_check" translatesAutoresizingMaskIntoConstraints="NO" id="LZc-vv-bIV">
                                 <rect key="frame" x="319" y="260.33333333333331" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="9pa-Bp-Cd2"/>
                                     <constraint firstAttribute="width" constant="30" id="ngU-jI-iuY"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_check" translatesAutoresizingMaskIntoConstraints="NO" id="G0D-UA-LAK">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_check" translatesAutoresizingMaskIntoConstraints="NO" id="G0D-UA-LAK">
                                 <rect key="frame" x="319" y="315.33333333333331" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="159-HM-3BN"/>
@@ -224,6 +231,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iku-re-aXD"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="uOc-P8-6Cc" id="RRG-IQ-3CV"/>
+                        <outlet property="confirmPassCheckImg" destination="G0D-UA-LAK" id="xgB-em-FC9"/>
+                        <outlet property="confirmPasswordTextField" destination="pHf-6J-FwG" id="iwJ-9v-JAe"/>
+                        <outlet property="emailTextField" destination="Equ-aM-dOe" id="cW1-tX-Equ"/>
+                        <outlet property="passCheckImg" destination="LZc-vv-bIV" id="q7X-Vd-dJf"/>
+                        <outlet property="passwordTextField" destination="YxA-Rc-HO5" id="lG8-ne-aXs"/>
+                        <outlet property="usernameTextField" destination="FyM-AD-d9m" id="irv-GK-6xN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RgH-Lm-dGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -232,7 +248,7 @@
         <!--Navigation Controller-->
         <scene sceneID="4nl-pl-qFP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vhe-xn-UIQ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginVC" automaticallyAdjustsScrollViewInsets="NO" id="Vhe-xn-UIQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4zH-ht-cnk">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
