@@ -18,11 +18,18 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //If we have no user signed in (with email, or anonymously), we sign him anonymously
+        if Auth.auth().currentUser == nil {
+            Auth.auth().signInAnonymously { (authResult, error) in
+                if let error = error {
+                    debugPrint(error.localizedDescription)
+                }
+            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        if let _ = Auth.auth().currentUser {
+        if let currentUser = Auth.auth().currentUser , !currentUser.isAnonymous {
             loginOutBtn.title = "Logout"
         } else {
             loginOutBtn.title = "Login"
@@ -36,19 +43,37 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func loginOutPressed(_ sender: Any) {
-        if let _ = Auth.auth().currentUser {
-            //We are logged in ---> Log out
+        
+        guard let currentUser = Auth.auth().currentUser else { return }
+        if currentUser.isAnonymous {
+            presentLoginController()
+        } else {
             do {
-                 try Auth.auth().signOut()
-                presentLoginController()
+                try Auth.auth().signOut()
+                //After the sign out (from signed in user with email) --> we set an Anonymous user
+                Auth.auth().signInAnonymously { (authResult, error) in
+                    if let error = error {
+                        debugPrint(error.localizedDescription)
+                    }
+                    self.presentLoginController()
+                }
             } catch {
                 debugPrint(error.localizedDescription)
             }
-           
-        } else {
-            //We are not logged in
-             presentLoginController()
         }
+        
+//        if let _ = Auth.auth().currentUser {
+//            //We are logged in ---> Log out
+//            do {
+//                 try Auth.auth().signOut()
+//                presentLoginController()
+//            } catch {
+//                debugPrint(error.localizedDescription)
+//            }
+//        } else {
+//            //We are not logged in
+//             presentLoginController()
+//        }
     }
     
 }
