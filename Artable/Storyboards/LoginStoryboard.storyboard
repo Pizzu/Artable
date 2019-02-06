@@ -54,6 +54,9 @@
                                         <state key="normal" title="Forgot Password?">
                                             <color key="titleColor" red="0.83529411764705885" green="0.39215686274509803" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="forgotPassPressed:" destination="Bvf-Rl-nvb" eventType="touchUpInside" id="oqb-8q-Rcn"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0h-0a-ABU" customClass="RoundedButton" customModule="Artable" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="193.33333333333331" width="335" height="40"/>
@@ -65,6 +68,9 @@
                                         <state key="normal" title="Log In">
                                             <color key="titleColor" red="0.95294117647058818" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginPressed:" destination="Bvf-Rl-nvb" eventType="touchUpInside" id="wMv-9V-35e"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBi-v8-AkE" customClass="RoundedButton" customModule="Artable" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="248.33333333333331" width="335" height="40"/>
@@ -90,6 +96,9 @@
                                         <state key="normal" title="Continue as guest">
                                             <color key="titleColor" red="0.95294117649999999" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="guestPressed:" destination="Bvf-Rl-nvb" eventType="touchUpInside" id="u87-AM-2Tv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -114,6 +123,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="fwQ-Wq-mLa"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="5Bz-8p-v6J" id="8Kb-41-W0u"/>
                         <outlet property="emailTextField" destination="uPX-7a-chp" id="6J8-Ql-r4o"/>
                         <outlet property="passwordTextField" destination="2mz-fn-w9j" id="t1W-CF-Osu"/>
                     </connections>

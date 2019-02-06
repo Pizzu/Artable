@@ -7,16 +7,41 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginVC: UIViewController {
 
     //Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction func forgotPassPressed(_ sender: Any) {
+    }
+    
+    @IBAction func loginPressed(_ sender: Any) {
+        guard let email = emailTextField.text , email.isNotEmpty,
+            let password = passwordTextField.text , password.isNotEmpty else { return }
+        
+        activityIndicator.startAnimating()
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+                self.activityIndicator.stopAnimating()
+                return
+            }
+            print("Login Successful")
+            self.activityIndicator.stopAnimating()
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func guestPressed(_ sender: Any) {
     }
     
 }
