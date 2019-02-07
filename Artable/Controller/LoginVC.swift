@@ -25,7 +25,10 @@ class LoginVC: UIViewController {
     
     @IBAction func loginPressed(_ sender: Any) {
         guard let email = emailTextField.text , email.isNotEmpty,
-            let password = passwordTextField.text , password.isNotEmpty else { return }
+            let password = passwordTextField.text , password.isNotEmpty else {
+                simpleAlert(title: "Error", message: "Please fill out all fields.")
+                return
+        }
         
         activityIndicator.startAnimating()
         
@@ -33,6 +36,7 @@ class LoginVC: UIViewController {
             if let error = error {
                 debugPrint(error.localizedDescription)
                 self.activityIndicator.stopAnimating()
+                self.handleFireAuthError(error: error)
                 return
             }
             print("Login Successful")

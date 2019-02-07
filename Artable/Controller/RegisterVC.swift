@@ -52,7 +52,15 @@ class RegisterVC: UIViewController {
     @IBAction func registerPressed(_ sender: Any) {
         guard let email = emailTextField.text , email.isNotEmpty ,
             let username = usernameTextField.text , username.isNotEmpty,
-            let password = passwordTextField.text , password.isNotEmpty else { return }
+            let password = passwordTextField.text , password.isNotEmpty else {
+                simpleAlert(title: "Error", message: "Please fill out all fields.")
+                return
+        }
+        
+        guard let confirmPassword = confirmPasswordTextField.text , confirmPassword == password else {
+            simpleAlert(title: "Error", message: "Passwords do not match.")
+            return
+        }
         
         activityIndicator.startAnimating()
         
@@ -63,6 +71,7 @@ class RegisterVC: UIViewController {
             if let error = error  {
                 self.activityIndicator.stopAnimating()
                 debugPrint(error.localizedDescription)
+                self.handleFireAuthError(error: error)
                 return
             }
             self.activityIndicator.stopAnimating()
