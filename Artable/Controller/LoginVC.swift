@@ -21,6 +21,10 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func forgotPassPressed(_ sender: Any) {
+        let vc = ForgotPasswordVC()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
     }
     
     @IBAction func loginPressed(_ sender: Any) {
@@ -46,6 +50,7 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func guestPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
 }
