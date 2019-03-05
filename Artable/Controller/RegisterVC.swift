@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CodableFirebase
 
 class RegisterVC: UIViewController {
 
@@ -20,6 +21,8 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var passCheckImg: UIImageView!
     @IBOutlet weak var confirmPassCheckImg: UIImageView!
     
+    private let db = Firestore.firestore()
+    private var user = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,8 +77,31 @@ class RegisterVC: UIViewController {
                 self.handleFireAuthError(error: error)
                 return
             }
-            self.activityIndicator.stopAnimating()
-            self.dismiss(animated: true, completion: nil)
+            self.createFirestoreUser(with: email, username: username)
+        }
+    }
+    
+    func createFirestoreUser(with email: String, username: String) {
+        do {
+            guard let authUser = Auth.auth().currentUser else { return }
+            let newUserRef = db.collection("users").document(authUser.uid)
+            user.id = newUserRef.documentID
+            user.email = email
+            user.username = username
+            let data = try FirestoreEncoder().encode(user)
+            newUserRef.setData(data, merge: true, completion: { (error) in
+                if let error = error {
+                    self.activityIndicator.stopAnimating()
+                    self.handleFireAuthError(error: error)
+                    debugPrint("Error signing in: \(error)")
+                } else {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+        } catch {
+            activityIndicator.stopAnimating()
+            simpleAlert(title: "Error", message: "Sorry, something went wrong creating your user.")
+            return
         }
     }
 }
