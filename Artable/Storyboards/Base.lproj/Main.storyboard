@@ -10,39 +10,69 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--HomeVC-->
+        <!--Artable-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="Artable" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cat3" translatesAutoresizingMaskIntoConstraints="NO" id="neK-2J-NCs">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H3O-6F-BwZ">
+                                <rect key="frame" x="20" y="0.0" width="335" height="724"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vPx-xi-UBj">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="neK-2J-NCs" secondAttribute="bottom" id="1nP-qW-zyv"/>
+                            <constraint firstItem="neK-2J-NCs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="26m-bY-iqP"/>
+                            <constraint firstItem="neK-2J-NCs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="95n-IE-hDO"/>
+                            <constraint firstItem="H3O-6F-BwZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="PVo-LX-XM1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="neK-2J-NCs" secondAttribute="trailing" id="VOc-Vw-rAI"/>
+                            <constraint firstItem="H3O-6F-BwZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Y0c-qi-fMG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H3O-6F-BwZ" secondAttribute="trailing" constant="20" id="ih4-12-gEU"/>
+                            <constraint firstAttribute="bottom" secondItem="H3O-6F-BwZ" secondAttribute="bottom" id="ydh-ll-TnB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="af9-tq-hRd">
+                    <navigationItem key="navigationItem" title="Artable" id="af9-tq-hRd">
                         <barButtonItem key="leftBarButtonItem" title="Login" id="mMS-Tc-hLl">
+                            <color key="tintColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="loginOutPressed:" destination="BYZ-38-t0r" id="59n-3r-JdR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="H3O-6F-BwZ" id="cA2-5g-s5b"/>
                         <outlet property="loginOutBtn" destination="mMS-Tc-hLl" id="jt0-zD-mca"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1066" y="678"/>
+            <point key="canvasLocation" x="1064.8" y="677.58620689655174"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Laa-E0-06h">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9fA-gP-HK8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h2u-xq-mU3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="h2u-xq-mU3">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.95294117649999999" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.2274509804" green="0.2666666667" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -54,4 +84,7 @@
             <point key="canvasLocation" x="189.59999999999999" y="677.58620689655174"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg_cat3" width="1500" height="1875"/>
+    </resources>
 </document>

@@ -7,6 +7,7 @@ def shared_pods
     pod 'Firebase/Firestore'
     pod 'Firebase/Storage'
     pod 'Kingfisher', '~> 4.0'
+    pod 'IQKeyboardManagerSwift'
     pod 'CodableFirebase'
 end
 
