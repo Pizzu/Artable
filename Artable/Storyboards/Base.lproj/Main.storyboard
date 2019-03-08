@@ -57,11 +57,49 @@
                     <connections>
                         <outlet property="collectionView" destination="H3O-6F-BwZ" id="cA2-5g-s5b"/>
                         <outlet property="loginOutBtn" destination="mMS-Tc-hLl" id="jt0-zD-mca"/>
+                        <segue destination="ezf-L4-Op9" kind="show" identifier="toProductsVC" id="nZM-fX-LsE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1064.8" y="677.58620689655174"/>
+        </scene>
+        <!--ProductsVC-->
+        <scene sceneID="PVw-3M-Ygi">
+            <objects>
+                <viewController id="ezf-L4-Op9" customClass="ProductsVC" customModule="Artable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cCe-u4-gjq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cat3" translatesAutoresizingMaskIntoConstraints="NO" id="6ZQ-yW-Npr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v8l-W5-uKc">
+                                <rect key="frame" x="20" y="0.0" width="335" height="724"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="6ZQ-yW-Npr" secondAttribute="bottom" id="0py-is-FbI"/>
+                            <constraint firstItem="7Db-kN-y7q" firstAttribute="trailing" secondItem="6ZQ-yW-Npr" secondAttribute="trailing" id="0t5-FW-5o7"/>
+                            <constraint firstItem="v8l-W5-uKc" firstAttribute="top" secondItem="cCe-u4-gjq" secondAttribute="top" id="WZ5-VO-jGm"/>
+                            <constraint firstItem="v8l-W5-uKc" firstAttribute="leading" secondItem="7Db-kN-y7q" secondAttribute="leading" constant="20" id="Xkv-0n-y7N"/>
+                            <constraint firstAttribute="bottom" secondItem="v8l-W5-uKc" secondAttribute="bottom" id="ZUK-Fa-iZY"/>
+                            <constraint firstItem="6ZQ-yW-Npr" firstAttribute="leading" secondItem="7Db-kN-y7q" secondAttribute="leading" id="amS-fu-ujN"/>
+                            <constraint firstItem="7Db-kN-y7q" firstAttribute="trailing" secondItem="v8l-W5-uKc" secondAttribute="trailing" constant="20" id="cPD-vP-dv1"/>
+                            <constraint firstItem="6ZQ-yW-Npr" firstAttribute="top" secondItem="7Db-kN-y7q" secondAttribute="top" id="ydu-I5-2rk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7Db-kN-y7q"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="v8l-W5-uKc" id="ymT-92-tdQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VsK-XN-FdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1909.5999999999999" y="677.58620689655174"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Laa-E0-06h">

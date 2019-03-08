@@ -82,8 +82,11 @@ class HomeVC: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        if let currentUser = Auth.auth().currentUser , !currentUser.isAnonymous {
+        if let user = Auth.auth().currentUser , !user.isAnonymous {
             loginOutBtn.title = "Logout"
+            if UserService.listener == nil {
+                UserService.getCurrentUser()
+            }
         } else {
             loginOutBtn.title = "Login"
             navigationItem.rightBarButtonItems?.removeAll()
@@ -104,6 +107,7 @@ class HomeVC: UIViewController {
         } else {
             do {
                 try Auth.auth().signOut()
+                UserService.logoutUser()
                 //After the sign out (from signed in user with email) --> we set an Anonymous user
                 Auth.auth().signInAnonymously { (authResult, error) in
                     if let error = error {
@@ -171,7 +175,15 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedCategory = categories[indexPath.item]
-        //performSegue(withIdentifier: "toProducts", sender: self)
+        performSegue(withIdentifier: Segues.ToProducts, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.ToProducts {
+            if let destination = segue.destination as? ProductsVC {
+                destination.selectedCategory = selectedCategory
+            }
+        }
     }
     
     

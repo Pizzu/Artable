@@ -30,8 +30,17 @@ struct AppColors {
 
 struct ReuseId {
     static let categoryCell = "categoryCell"
+    static let productCell = "productCell"
 }
 
 struct NibName {
     static let categoryCell = "CategoryCell"
+    static let productCell = "ProductCell"
+}
+
+struct Segues {
+    static let ToProducts = "toProductsVC"
+    static let ToNewCategory = "toNewCategory"
+    static let ToAddEditProduct = "toAddEditProduct"
+    static let EditCategory = "editCategory"
 }
