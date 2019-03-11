@@ -40,7 +40,7 @@ class AddEditProductVC: UIViewController {
         
         if let product = productToEdit {
             productNameTextField.text = product.name
-            productPriceTextField.text = "$\(product.price)"
+            productPriceTextField.text = "\(product.price)"
             stockTextField.text = "\(product.stock)"
             productDescription.text = product.productDescription
             

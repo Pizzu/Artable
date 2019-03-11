@@ -10,6 +10,10 @@ import UIKit
 import Firebase
 import Kingfisher
 
+protocol FavoriteProductDelegate : class  {
+    func productFavorited(product: Product)
+}
+
 class ProductCell: UITableViewCell {
 
     //Outlets
@@ -19,6 +23,9 @@ class ProductCell: UITableViewCell {
     @IBOutlet weak var favoriteBtn: UIButton!
     @IBOutlet weak var addToCartBtn: RoundedButton!
     
+    //Variables
+    private var product: Product!
+    weak var delegate : FavoriteProductDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,7 +35,10 @@ class ProductCell: UITableViewCell {
         }
     }
     
-    func configureCell(product: Product) {
+    func configureCell(product: Product, delegate: FavoriteProductDelegate) {
+        self.delegate = delegate
+        self.product = product
+        
         productName.text = product.name
         productPrice.text = "$\(product.price)"
         
@@ -54,6 +64,7 @@ class ProductCell: UITableViewCell {
     }
     
     @IBAction func favoriteBtnPressed(_ sender: Any) {
+        delegate?.productFavorited(product: product)
     }
     
     

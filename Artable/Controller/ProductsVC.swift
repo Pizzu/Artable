@@ -10,8 +10,8 @@ import UIKit
 import Firebase
 import CodableFirebase
 
-class ProductsVC: UIViewController {
-
+class ProductsVC: UIViewController, FavoriteProductDelegate {
+    
     //Outlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -66,6 +66,33 @@ class ProductsVC: UIViewController {
         }
     }
     
+    func productFavorited(product: Product) {
+        guard let index = products.index(of: product) else { return }
+        let productRef = Firestore.firestore().collection("users").document(UserService.user.id).collection("favoriteProducts").document(product.id)
+        productRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                //We need to unlike the question
+                productRef.delete()
+                self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+            } else {
+                //We need to like the question
+                do {
+                    let data = try FirestoreEncoder().encode(product)
+                    productRef.setData(data, merge: true) { (error) in
+                        if let error = error {
+                            debugPrint(error.localizedDescription)
+                            self.simpleAlert(title: "Error", message: "Unable to save data")
+                            return
+                        }
+                        self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                    }
+                }  catch {
+                    debugPrint(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
 }
 
 extension ProductsVC : UITableViewDelegate, UITableViewDataSource {
@@ -103,15 +130,14 @@ extension ProductsVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: ReuseId.productCell, for: indexPath) as? ProductCell {
-            cell.configureCell(product: products[indexPath.row])
+            cell.configureCell(product: products[indexPath.row], delegate: self)
             return cell
         }
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedProduct = products[indexPath.row]
-        //performSegue(withIdentifier: "toQuestionsList", sender: self)
+        return
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
