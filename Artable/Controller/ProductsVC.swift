@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import CodableFirebase
 
-class ProductsVC: UIViewController, FavoriteProductDelegate {
+class ProductsVC: UIViewController, ActionProductDelegate {
     
     //Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -36,6 +36,10 @@ class ProductsVC: UIViewController, FavoriteProductDelegate {
     
     func setupNavigationBar() {
         title = selectedCategory?.name.lowercased()
+        if let user = Auth.auth().currentUser , !user.isAnonymous {
+            let cartBtn = UIBarButtonItem(image: UIImage(named: "bar_button_cart"), style: .plain, target: self, action: #selector(cartPressed))
+            navigationItem.rightBarButtonItem = cartBtn
+        }
     }
     
     func setupQuery() {
@@ -66,6 +70,10 @@ class ProductsVC: UIViewController, FavoriteProductDelegate {
         }
     }
     
+    @objc func cartPressed() {
+        return
+    }
+    
     func productFavorited(product: Product) {
         guard let index = products.index(of: product) else { return }
         let productRef = Firestore.firestore().collection("users").document(UserService.user.id).collection("favoriteProducts").document(product.id)
@@ -91,6 +99,14 @@ class ProductsVC: UIViewController, FavoriteProductDelegate {
                 }
             }
         }
+    }
+    
+    func showInfo(product: Product) {
+        let vc = ProductDetailVC()
+        vc.product = product
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
     }
     
 }

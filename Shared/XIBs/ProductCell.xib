@@ -55,15 +55,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pf0-TI-xhu" customClass="RoundedButton" customModule="Artable" customModuleProvider="target">
-                                        <rect key="frame" x="57.5" y="75" width="109" height="31"/>
+                                        <rect key="frame" x="63" y="75" width="98" height="31"/>
                                         <color key="backgroundColor" red="0.83529411760000005" green="0.3921568627" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="4" maxX="10" maxY="4"/>
-                                        <state key="normal" title="Add to cart">
+                                        <state key="normal" title="More Info">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="addToCartPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BkL-YN-Iqo"/>
+                                            <action selector="showInfoPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BkL-YN-Iqo"/>
                                         </connections>
                                     </button>
                                 </subviews>

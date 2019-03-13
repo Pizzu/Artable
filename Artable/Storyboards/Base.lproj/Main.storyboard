@@ -76,7 +76,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v8l-W5-uKc">
-                                <rect key="frame" x="20" y="0.0" width="335" height="724"/>
+                                <rect key="frame" x="8" y="0.0" width="359" height="724"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -85,10 +85,10 @@
                             <constraint firstAttribute="bottom" secondItem="6ZQ-yW-Npr" secondAttribute="bottom" id="0py-is-FbI"/>
                             <constraint firstItem="7Db-kN-y7q" firstAttribute="trailing" secondItem="6ZQ-yW-Npr" secondAttribute="trailing" id="0t5-FW-5o7"/>
                             <constraint firstItem="v8l-W5-uKc" firstAttribute="top" secondItem="cCe-u4-gjq" secondAttribute="top" id="WZ5-VO-jGm"/>
-                            <constraint firstItem="v8l-W5-uKc" firstAttribute="leading" secondItem="7Db-kN-y7q" secondAttribute="leading" constant="20" id="Xkv-0n-y7N"/>
+                            <constraint firstItem="v8l-W5-uKc" firstAttribute="leading" secondItem="7Db-kN-y7q" secondAttribute="leading" constant="8" id="Xkv-0n-y7N"/>
                             <constraint firstAttribute="bottom" secondItem="v8l-W5-uKc" secondAttribute="bottom" id="ZUK-Fa-iZY"/>
                             <constraint firstItem="6ZQ-yW-Npr" firstAttribute="leading" secondItem="7Db-kN-y7q" secondAttribute="leading" id="amS-fu-ujN"/>
-                            <constraint firstItem="7Db-kN-y7q" firstAttribute="trailing" secondItem="v8l-W5-uKc" secondAttribute="trailing" constant="20" id="cPD-vP-dv1"/>
+                            <constraint firstItem="7Db-kN-y7q" firstAttribute="trailing" secondItem="v8l-W5-uKc" secondAttribute="trailing" constant="8" id="cPD-vP-dv1"/>
                             <constraint firstItem="6ZQ-yW-Npr" firstAttribute="top" secondItem="7Db-kN-y7q" secondAttribute="top" id="ydu-I5-2rk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Db-kN-y7q"/>

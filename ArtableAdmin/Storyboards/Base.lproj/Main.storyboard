@@ -72,7 +72,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QW3-rE-c2w">
-                                <rect key="frame" x="20" y="0.0" width="335" height="724"/>
+                                <rect key="frame" x="8" y="0.0" width="359" height="724"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -80,11 +80,11 @@
                         <constraints>
                             <constraint firstItem="fU8-in-zEC" firstAttribute="leading" secondItem="gW2-De-rH2" secondAttribute="leading" id="0MT-On-xGt"/>
                             <constraint firstAttribute="bottom" secondItem="QW3-rE-c2w" secondAttribute="bottom" id="9jH-HY-7E5"/>
-                            <constraint firstAttribute="trailing" secondItem="QW3-rE-c2w" secondAttribute="trailing" constant="20" id="OLB-VS-1AG"/>
+                            <constraint firstAttribute="trailing" secondItem="QW3-rE-c2w" secondAttribute="trailing" constant="8" id="OLB-VS-1AG"/>
                             <constraint firstItem="g3i-PG-70N" firstAttribute="trailing" secondItem="fU8-in-zEC" secondAttribute="trailing" id="ZWa-nE-Otd"/>
                             <constraint firstItem="QW3-rE-c2w" firstAttribute="top" secondItem="g3i-PG-70N" secondAttribute="top" id="Zt4-2D-eX5"/>
                             <constraint firstItem="fU8-in-zEC" firstAttribute="top" secondItem="g3i-PG-70N" secondAttribute="top" id="tYS-3N-da8"/>
-                            <constraint firstItem="QW3-rE-c2w" firstAttribute="leading" secondItem="gW2-De-rH2" secondAttribute="leading" constant="20" id="u6A-1K-Mrk"/>
+                            <constraint firstItem="QW3-rE-c2w" firstAttribute="leading" secondItem="gW2-De-rH2" secondAttribute="leading" constant="8" id="u6A-1K-Mrk"/>
                             <constraint firstAttribute="bottom" secondItem="fU8-in-zEC" secondAttribute="bottom" id="uxI-XG-ivB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g3i-PG-70N"/>

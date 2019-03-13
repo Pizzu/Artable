@@ -84,6 +84,9 @@ class HomeVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if let user = Auth.auth().currentUser , !user.isAnonymous {
             loginOutBtn.title = "Logout"
+            let cartBtn = UIBarButtonItem(image: UIImage(named: "bar_button_cart"), style: .plain, target: self, action: #selector(cartPressed))
+            let favoritesBtn = UIBarButtonItem(image: UIImage(named: "bar_button_star"), style: .plain, target: self, action: #selector(favoritesPressed))
+            navigationItem.setRightBarButtonItems([cartBtn, favoritesBtn], animated: true)
             if UserService.listener == nil {
                 UserService.getCurrentUser()
             }
@@ -91,6 +94,14 @@ class HomeVC: UIViewController {
             loginOutBtn.title = "Login"
             navigationItem.rightBarButtonItems?.removeAll()
         }
+    }
+    
+    @objc func favoritesPressed() {
+        //performSegue(withIdentifier: "toFavoritesVC", sender: self)
+    }
+    
+    @objc func cartPressed() {
+        return
     }
     
     private func presentLoginController() {
