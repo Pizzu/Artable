@@ -10,6 +10,43 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--FavoritesVC-->
+        <scene sceneID="DUN-Ew-gSe">
+            <objects>
+                <viewController id="e25-6B-i4x" customClass="FavoritesVC" customModule="Artable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AH5-4h-bhH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cat3" translatesAutoresizingMaskIntoConstraints="NO" id="kN2-He-xu4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fKC-Wo-d7g">
+                                <rect key="frame" x="8" y="0.0" width="359" height="724"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fKC-Wo-d7g" firstAttribute="leading" secondItem="8sF-Cx-BsD" secondAttribute="leading" constant="8" id="0bg-HE-kyJ"/>
+                            <constraint firstAttribute="bottom" secondItem="fKC-Wo-d7g" secondAttribute="bottom" id="9AM-23-11w"/>
+                            <constraint firstItem="kN2-He-xu4" firstAttribute="trailing" secondItem="8sF-Cx-BsD" secondAttribute="trailing" id="BZQ-Oa-tT9"/>
+                            <constraint firstItem="kN2-He-xu4" firstAttribute="leading" secondItem="8sF-Cx-BsD" secondAttribute="leading" id="J9x-cv-DUI"/>
+                            <constraint firstAttribute="bottom" secondItem="kN2-He-xu4" secondAttribute="bottom" id="ldz-WO-gcJ"/>
+                            <constraint firstItem="fKC-Wo-d7g" firstAttribute="top" secondItem="8sF-Cx-BsD" secondAttribute="top" id="qE4-Xj-Q9C"/>
+                            <constraint firstItem="8sF-Cx-BsD" firstAttribute="trailing" secondItem="fKC-Wo-d7g" secondAttribute="trailing" constant="8" id="wZo-yA-Psv"/>
+                            <constraint firstItem="kN2-He-xu4" firstAttribute="top" secondItem="8sF-Cx-BsD" secondAttribute="top" id="wm3-NX-oRb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8sF-Cx-BsD"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="fKC-Wo-d7g" id="YDG-4e-Hsw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OGx-H4-eWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1888.8" y="-151.47783251231527"/>
+        </scene>
         <!--Artable-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -18,7 +55,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cat3" translatesAutoresizingMaskIntoConstraints="NO" id="neK-2J-NCs">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cat3" translatesAutoresizingMaskIntoConstraints="NO" id="neK-2J-NCs">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H3O-6F-BwZ">
@@ -58,6 +95,7 @@
                         <outlet property="collectionView" destination="H3O-6F-BwZ" id="cA2-5g-s5b"/>
                         <outlet property="loginOutBtn" destination="mMS-Tc-hLl" id="jt0-zD-mca"/>
                         <segue destination="ezf-L4-Op9" kind="show" identifier="toProductsVC" id="nZM-fX-LsE"/>
+                        <segue destination="e25-6B-i4x" kind="show" identifier="toFavoritesVC" id="Mpa-8C-8gQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

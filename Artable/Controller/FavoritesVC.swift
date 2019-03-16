@@ -1,8 +1,8 @@
 //
-//  ProductsVC.swift
+//  FavoritesVC.swift
 //  Artable
 //
-//  Created by Luca Lo Forte on 07/03/2019.
+//  Created by Luca Lo Forte on 14/03/2019.
 //  Copyright © 2019 Luca Lo Forte. All rights reserved.
 //
 
@@ -10,41 +10,34 @@ import UIKit
 import Firebase
 import CodableFirebase
 
-class ProductsVC: UIViewController, ActionProductDelegate {
-    
-    //Outlets
+class FavoritesVC: UIViewController, ActionProductDelegate {
+   
+    //Outelets
     @IBOutlet weak var tableView: UITableView!
     
     //Variables
-    var selectedCategory: Category?
     var products = [Product]()
-    var selectedProduct: Product?
     private var listener : ListenerRegistration!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
         setupTableView()
         setupQuery()
-        setupNavigationBar()
+    }
+    
+    func setupNavigationBar() {
+        title = "Favorites"
     }
     
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: NibName.productCell, bundle: nil), forCellReuseIdentifier: ReuseId.productCell)
-    }
-    
-    func setupNavigationBar() {
-        title = selectedCategory?.name.lowercased()
-        if let user = Auth.auth().currentUser , !user.isAnonymous {
-            let cartBtn = UIBarButtonItem(image: UIImage(named: "bar_button_cart"), style: .plain, target: self, action: #selector(cartPressed))
-            navigationItem.rightBarButtonItem = cartBtn
-        }
+        tableView.register(UINib(nibName: NibName.productCell , bundle: nil), forCellReuseIdentifier: ReuseId.productCell)
     }
     
     func setupQuery() {
-        guard let selectedCategory = selectedCategory else { return }
-        listener = Firestore.firestore().collection("products").whereField("categoryId", isEqualTo: selectedCategory.id).order(by: "name", descending: false).addSnapshotListener { (snapshot, error) in
+       listener = Firestore.firestore().collection("users").document(UserService.user.id).collection("favoriteProducts").order(by: "timeStamp", descending: true).addSnapshotListener { (snapshot, error) in
             if let error = error {
                 print("error")
                 debugPrint(error.localizedDescription)
@@ -70,35 +63,14 @@ class ProductsVC: UIViewController, ActionProductDelegate {
         }
     }
     
-    @objc func cartPressed() {
-        return
-    }
-    
     func productFavorited(product: Product) {
-        guard let index = products.index(of: product) else { return }
-        let productRef = Firestore.firestore().collection("users").document(UserService.user.id).collection("favoriteProducts").document(product.id)
-        productRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                //We need to unlike the question
-                productRef.delete()
-                self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-            } else {
-                //We need to like the question
-                do {
-                    let data = try FirestoreEncoder().encode(product)
-                    productRef.setData(data, merge: true) { (error) in
-                        if let error = error {
-                            debugPrint(error.localizedDescription)
-                            self.simpleAlert(title: "Error", message: "Unable to save data")
-                            return
-                        }
-                        self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-                    }
-                }  catch {
-                    debugPrint(error.localizedDescription)
+            let questionRef = Firestore.firestore().collection("users").document(UserService.user.id).collection("favoriteProducts").document(product.id)
+            questionRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    //We need to unlike the question
+                    questionRef.delete()
                 }
             }
-        }
     }
     
     func showInfo(product: Product) {
@@ -108,10 +80,9 @@ class ProductsVC: UIViewController, ActionProductDelegate {
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: true, completion: nil)
     }
-    
 }
 
-extension ProductsVC : UITableViewDelegate, UITableViewDataSource {
+extension FavoritesVC : UITableViewDelegate, UITableViewDataSource {
     func onDocumentAdded(change: DocumentChange, product: Product) {
         let newIndex = Int(change.newIndex)
         products.insert(product, at: newIndex)

@@ -97,7 +97,7 @@ class HomeVC: UIViewController {
     }
     
     @objc func favoritesPressed() {
-        //performSegue(withIdentifier: "toFavoritesVC", sender: self)
+        performSegue(withIdentifier: Segues.ToFavoritesVC, sender: self)
     }
     
     @objc func cartPressed() {
